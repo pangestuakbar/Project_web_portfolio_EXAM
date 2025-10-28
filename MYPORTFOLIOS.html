@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Mahasiswa - AkbarPangestu</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Load Font Awesome (untuk ikon) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8gBchW+5fOQyI7J3C9b8M3F9R0B4H3R+hH3vJ1B0W+H3wT3iZ5F5z"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Menggunakan font Inter secara default dan memastikan scroll-smooth bekerja */
+      body {
+        font-family: "Inter", sans-serif;
+        /* Mengganti latar belakang gelap polos menjadi gradien halus */
+        background: linear-gradient(135deg, #1f2838 0%, #05215c 100%);
+        color: #e5e7eb; /* Teks putih keabu-abuan terang */
+      }
+
+      /* Gaya umum untuk memberikan kesan glossy/bercahaya */
+      .card-glossy {
+        background-color: #1f2937; /* Background kartu lebih terang dari body */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+          0 0 15px rgba(3, 23, 54, 0.4); /* Shadow utama & cahaya biru */
+        transition: all 0.3s ease-in-out;
+      }
+
+      .card-glossy:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7),
+          0 0 25px rgba(2, 2, 255, 0.8); /* Cahaya lebih kuat saat hover (Cyan) */
+        transform: translateY(-5px); /* Efek sedikit naik */
+      }
+
+      /* Aksen warna biru/cyan untuk judul dan link */
+      .accent-color {
+        color: #38bdf8; /* Warna Cyan terang */
+      }
+
+      /* Navigasi */
+      .nav-link:hover {
+        color: #38bdf8;
+        text-shadow: 0 0 5px rgba(56, 189, 248, 0.6);
+      }
+
+      /* Garis bawah Judul */
+      .section-title {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0.75rem;
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        width: 70%;
+        height: 5px;
+        bottom: 0;
+        left: 15%;
+        background-color: #38bdf8; /* Garis bawah Cyan */
+        border-radius: 9999px;
+        box-shadow: 0 0 10px #38bdf8; /* Efek glow pada garis */
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Navigasi Bar Tetap (Fixed Navbar) -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-[#111827] bg-opacity-80 shadow-2xl backdrop-blur-md border-b border-gray-700"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo/Nama Awal -->
+          <div
+            class="flex-shrink-0 text-xl font-extrabold text-[#38bdf8] tracking-widest"
+          >
+            PANGESTU PORTFOLIO
+          </div>
+          <!-- Menu Navigasi Desktop -->
+          <div class="hidden md:flex space-x-8">
+            <a href="#home" class="nav-link text-white transition duration-300"
+              >Halaman Utama</a
+            >
+            <a href="#about" class="nav-link text-white transition duration-300"
+              >Tentang Saya</a
+            >
+            <a
+              href="#portfolio"
+              class="nav-link text-white transition duration-300"
+              >Portofolio</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-white transition duration-300"
+              >Kontak</a
+            >
+          </div>
+          <!-- Tombol Menu Mobile -->
+          <div class="md:hidden">
+            <button
+              id="menu-button"
+              class="text-white hover:text-[#38bdf8] focus:outline-none p-2 rounded-md"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Menu Navigasi Mobile (Disembunyikan) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-[#1f2937] border-t border-gray-700"
+      >
+        <div
+          class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center"
+        >
+          <a
+            href="#home"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700 w-full text-center"
+            >Halaman Utama</a
+          >
+          <a
+            href="#about"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700 w-full text-center"
+            >Tentang Saya</a
+          >
+          <a
+            href="#portfolio"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700 w-full text-center"
+            >Portofolio</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700 w-full text-center"
+            >Kontak</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- 1. Halaman Utama (Dua Kolom Responsif - Disesuaikan dengan Gambar Referensi) -->
+      <!-- 1. Halaman Utama dengan Efek Glossy & Mist Futuristik -->
+      <section
+        id="home"
+        class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-gradient-to-br from-[#031a42] via-[#05275f] to-[#082f71]"
+      >
+        <!-- Lapisan kabut lembut di belakang -->
+        <div class="absolute inset-0">
+          <div
+            class="absolute top-1/3 left-1/4 w-72 h-72 bg-cyan-500/20 blur-[100px] rounded-full animate-pulse"
+          ></div>
+          <div
+            class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full animate-pulse"
+          ></div>
+        </div>
+
+        <!-- Container utama glossy -->
+        <div
+          class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center justify-between gap-10 rounded-3xl bg-white/10 border border-white/10 shadow-[0_0_25px_rgba(56,189,248,0.25)] backdrop-saturate-150 backdrop-blur-[8px] hover:shadow-[0_0_40px_rgba(56,189,248,0.4)] transition-all duration-500"
+        >
+          <!-- TEKS -->
+          <div
+            class="text-center md:text-left md:w-1/2 px-6 md:px-10 py-10 z-10"
+          >
+            <h1
+              class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-white leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)]"
+            >
+              Hi, I'm
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-[#38bdf8] to-[#93c5fd]"
+              >
+                Akbar Pangestu
+              </span>
+            </h1>
+
+            <p
+              class="text-lg md:text-xl text-gray-200 leading-relaxed max-w-lg mb-2"
+            >
+              IT Student of Darunnajah University
+            </p>
+            <p
+              class="text-lg md:text-xl text-gray-200 leading-relaxed max-w-lg mb-8"
+            >
+              Passionate about Web Technologic
+            </p>
+
+            <a
+              href="#portfolio"
+              class="inline-block bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-cyan-400/60 transform hover:scale-105"
+            >
+              Lihat Portofolio Saya
+            </a>
+          </div>
+
+          <!-- FOTO -->
+          <div
+            class="relative flex justify-center items-center md:w-1/2 px-6 md:px-10 py-10"
+          >
+            <div
+              class="photo-frame rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(56,189,248,0.3)] border border-white/20 transition-all duration-500 hover:shadow-[0_10px_50px_rgba(56,189,248,0.5)]"
+            >
+              <img
+                src="assets/img/profile.jpg"
+                alt="profile"
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Halaman Tentang Saya -->
+      <section id="about" class="py-20 md:py-32 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            class="text-4xl font-bold text-center mb-16 section-title text-white"
+          >
+            Tentang Saya
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-12">
+            <!-- Latar Belakang & Pengalaman -->
+            <div class="card-glossy p-6 md:p-8 rounded-xl">
+              <h3 class="text-2xl font-semibold mb-6 accent-color">
+                Latar Belakang & Pengalaman
+              </h3>
+              <div class="space-y-6 text-gray-300">
+                <div>
+                  <h4 class="font-bold text-lg text-white">
+                    Pendidikan: Sarjana S1 Sistem Teknologi Informasi
+                  </h4>
+                  <p class="text-sm italic accent-color">
+                    Universitas Darunnajah, 2024 - Sekarang
+                  </p>
+                  <p class="mt-1">
+                    Fokus pada algoritma, enginering, struktur data, database,
+                    operating system, arsitektur computer, comunication system .
+                    IPK 3.85/4.00.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg text-white">
+                    Pengalaman Berorganisasi
+                  </h4>
+                  <p class="text-sm italic accent-color">
+                    Himpunan Prodi, Oktober 2025 - sekarang
+                  </p>
+                  <p class="mt-1">
+                    berperang dalam perencanaan suatu agenda dan merumuskannya
+                    untuk di serahkan kepada pihak selanjutnya
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Keterampilan -->
+            <div class="card-glossy p-6 md:p-8 rounded-xl">
+              <h3 class="text-2xl font-semibold mb-6 accent-color">
+                Keterampilan Teknis (Skills)
+              </h3>
+              <div class="grid grid-cols-2 gap-4">
+                <!-- Kelompok Keterampilan -->
+                <div>
+                  <h4 class="font-bold text-white mb-2">Frontend</h4>
+                  <ul class="list-disc list-inside space-y-1 text-gray-300">
+                    <li class="hover:text-cyan-400">
+                      HTML5, CSS3, JavaScript (ES6+)
+                    </li>
+                    <li class="hover:text-cyan-400">React.js, Next.js</li>
+                    <li class="hover:text-cyan-400">Tailwind CSS, Bootstrap</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white mb-2">Backend & Database</h4>
+                  <ul class="list-disc list-inside space-y-1 text-gray-300">
+                    <li class="hover:text-cyan-400">Node.js, Express.js</li>
+                    <li class="hover:text-cyan-400">Python (Django/Flask)</li>
+                    <li class="hover:text-cyan-400">PostgreSQL, MongoDB</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white mb-2">Tools & Lainnya</h4>
+                  <ul class="list-disc list-inside space-y-1 text-gray-300">
+                    <li class="hover:text-cyan-400">Git & GitHub</li>
+                    <li class="hover:text-cyan-400">Docker</li>
+                    <li class="hover:text-cyan-400">Figma (Dasar)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Halaman Portofolio -->
+      <section id="portfolio" class="py-20 md:py-32 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            class="text-4xl font-bold text-center mb-16 section-title text-white"
+          >
+            Portofolio
+          </h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Kartu Portofolio 1 -->
+            <div class="card-glossy rounded-xl overflow-hidden">
+              <!-- Gambar Placeholder -->
+              <img
+                src="assets/img/works (2).png"
+                alt="work"
+                class="w-full h-48 object-cover border-b border-gray-700"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 accent-color">
+                  Redesign Web platform streaming Video
+                </h3>
+                <p class="text-gray-400 text-sm">
+                  Pengembangan penuh design interface dengan format auto layout.
+                  menyambungkan prototipe dan memastikan kelayakannya.
+                </p>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="mt-4 inline-block text-sm text-cyan-400 hover:text-cyan-300 font-medium"
+                  >Lihat Detail &rarr;</a
+                >
+              </div>
+            </div>
+
+            <!-- Kartu Portofolio 2 -->
+            <div class="card-glossy rounded-xl overflow-hidden">
+              <!-- Gambar Placeholder -->
+              <img
+                src="assets/img/works (1).png"
+                alt="work"
+                class="w-full h-48 object-cover border-b border-gray-700"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 accent-color">
+                  Men-Slicing Web.
+                </h3>
+                <p class="text-gray-400 text-sm">
+                  Proses pengkorversian sebuah desain antar muka UI grafis, dari
+                  figma menjadi kode yang dapat ditampilkan di perambanan web
+                  HTML dan CSS.
+                </p>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="mt-4 inline-block text-sm text-cyan-400 hover:text-cyan-300 font-medium"
+                  >Lihat Detail &rarr;</a
+                >
+              </div>
+            </div>
+
+            <!-- Kartu Portofolio 3 -->
+            <div class="card-glossy rounded-xl overflow-hidden">
+              <!-- Gambar Placeholder -->
+              <img
+                src="assets/img/works (3).jpeg"
+                alt="work"
+                class="w-full h-48 object-cover border-b border-gray-700"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 accent-color">
+                  Hands-on Database
+                </h3>
+                <p class="text-gray-400 text-sm">
+                  Proses perancangan dan pemmbangunan struktur untuk menyimpan,
+                  mengelola, dan mengakses data secara efisien. dalam proses ini
+                  melibatkan beberapa tahapan utama yaitu analisis kebutuhan
+                  perancangan konseptual, logis, fisik, hingga implementasi.
+                </p>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="mt-4 inline-block text-sm text-cyan-400 hover:text-cyan-300 font-medium"
+                  >Lihat Detail &rarr;</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Halaman Kontak -->
+      <section id="contact" class="py-20 md:py-32 border-t border-gray-800">
+        <!-- Diubah dari max-w-4xl menjadi max-w-7xl untuk layout persegi panjang di desktop -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            class="text-4xl font-bold text-center mb-16 section-title text-white"
+          >
+            Hubungi Saya
+          </h2>
+
+          <div
+            id="contact-message-box"
+            class="hidden bg-green-900 border border-green-700 text-green-300 p-4 rounded-xl mb-8 text-center shadow-lg"
+          >
+            <!-- Pesan sukses akan ditampilkan di sini -->
+          </div>
+
+          <div
+            class="card-glossy p-8 md:p-10 rounded-xl mx-auto md:max-w-4xl lg:max-w-6xl"
+          >
+            <!-- Bagian Ikon Media Sosial -->
+            <div
+              class="flex justify-center space-x-8 mb-10 border-b border-gray-700 pb-8"
+            >
+              <!-- LinkedIn -->
+              <a
+                href="[LINK_LINKEDIN]"
+                target="_blank"
+                class="social-icon-link text-4xl text-[#0A66C2] hover:text-[#38bdf8] transition duration-300"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <!-- GitHub -->
+              <a
+                href="[LINK_GITHUB]"
+                target="_blank"
+                class="social-icon-link text-4xl text-white hover:text-[#38bdf8] transition duration-300"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <!-- Email (menggunakan ikon amplop) -->
+              <a
+                href="mailto:[ALAMAT_EMAIL]"
+                class="social-icon-link text-4xl text-[#ea4335] hover:text-[#38bdf8] transition duration-300"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+              <!-- WhatsApp/Phone (menggunakan ikon WhatsApp) -->
+              <a
+                href="https://wa.me/[NOMOR_WA_DENGAN_KODE_NEGARA]"
+                target="_blank"
+                class="social-icon-link text-4xl text-[#25D366] hover:text-[#38bdf8] transition duration-300"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+
+            <!-- Detail Kontak Langsung -->
+            <div
+              class="flex flex-col sm:flex-row justify-center sm:space-x-12 mb-10 text-center space-y-4 sm:space-y-0"
+            >
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-envelope accent-color text-xl"></i>
+                <span class="text-gray-300 text-lg"
+                  >Pangestuakbar939@gmail.com</span
+                >
+              </div>
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-phone accent-color text-xl"></i>
+                <span class="text-gray-300 text-lg">+62 8951 9762 659</span>
+              </div>
+            </div>
+
+            <form id="contact-form" class="space-y-6">
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-300 mb-2"
+                  >Nama Lengkap</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-cyan-500 focus:border-cyan-500 transition duration-150"
+                  placeholder="Masukkan nama Anda"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-300 mb-2"
+                  >Alamat Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-cyan-500 focus:border-cyan-500 transition duration-150"
+                  placeholder="nama@mail.com"
+                />
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-300 mb-2"
+                  >Pesan atau Pertanyaan</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-cyan-500 focus:border-cyan-500 transition duration-150"
+                  placeholder="Tuliskan pesan Anda di sini..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold py-3 rounded-lg transition duration-300 transform hover:scale-[1.01] shadow-xl shadow-cyan-500/50"
+              >
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#111827] py-6 border-t border-gray-800">
+      <div
+        class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm"
+      >
+        <p>&copy; 2025 Akbar Pangestu. | Portfolio | Allready Reserved</p>
+      </div>
+    </footer>
+
+    <script>
+      // Logika untuk menampilkan/menyembunyikan menu mobile
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          mobileMenu.classList.toggle("hidden");
+        });
+
+      // Logika untuk menutup menu mobile saat link di-klik
+      document.querySelectorAll("#mobile-menu a").forEach((item) => {
+        item.addEventListener("click", () => {
+          document.getElementById("mobile-menu").classList.add("hidden");
+        });
+      });
+
+      // Logika untuk simulasi pengiriman formulir kontak
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const form = e.target;
+          const messageBox = document.getElementById("contact-message-box");
+
+          // Tampilkan pesan loading/sukses
+          messageBox.classList.remove(
+            "hidden",
+            "bg-red-900",
+            "border-red-700",
+            "text-red-300"
+          );
+          messageBox.classList.add(
+            "bg-green-900",
+            "border-green-700",
+            "text-green-300"
+          );
+          messageBox.innerHTML = "Pesan Anda sedang dikirim...";
+
+          // Simulasikan delay pengiriman
+          setTimeout(() => {
+            // Reset form
+            form.reset();
+
+            // Tampilkan pesan sukses
+            messageBox.innerHTML =
+              "Terima kasih! Pesan Anda telah berhasil terkirim. Saya akan membalasnya secepat mungkin.";
+
+            // Sembunyikan pesan sukses setelah beberapa detik
+            setTimeout(() => {
+              messageBox.classList.add("hidden");
+            }, 5000);
+          }, 1500); // Delay 1.5 detik
+        });
+    </script>
+  </body>
+</html>
+
+<!-- background: linear-gradient(135deg, #042b6d 0%, #082971 100%); -->
